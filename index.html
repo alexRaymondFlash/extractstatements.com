@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extract Bank Statements to Excel â€” Securely, Locally, in Seconds</title>
+  <meta name="description" content="Extract bank statements to Excel securely â€” 100% local processing, no cloud uploads, no AI reading your data. Forensic-grade reconciliation for accountants, lawyers, and analysts. $99 one-time.">
+  <meta name="keywords" content="extract bank statements, extract bank statements securely, bank statement to excel, bank statement parser, parse bank statements, bank statement extractor, extract bank statements with AI, secure bank statement extraction, forensic accounting tool, bank statement OCR, convert bank statement to spreadsheet">
+  <link rel="canonical" href="https://extractstatements.com">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Extract Bank Statements to Excel â€” Securely, No Cloud, No AI">
+  <meta property="og:description" content="Extract bank statements to Excel securely. 100% local processing â€” your data never leaves your device. Built for forensic accountants and legal professionals.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://extractstatements.com">
+
+  <!-- Favicon (simple inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ“Š</text></svg>">
+
+  <style>
+    :root {
+      --navy: #0f1729;
+      --navy-light: #1a2540;
+      --blue: #3b82f6;
+      --blue-hover: #2563eb;
+      --green: #22c55e;
+      --gold: #f59e0b;
+      --white: #ffffff;
+      --gray-100: #f3f4f6;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: var(--gray-900);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      padding: 80px 24px 100px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span { color: var(--blue); }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 16px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .hero-cta:hover { background: var(--blue-hover); transform: translateY(-1px); }
+
+    .hero-price {
+      display: block;
+      margin-top: 16px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .hero-price strong { color: rgba(255,255,255,0.7); }
+
+    /* Trust bar */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .trust-item .icon { font-size: 18px; }
+
+    /* Section shared */
+    section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray-500);
+      max-width: 600px;
+    }
+
+    /* How it works */
+    .how-it-works { background: var(--gray-100); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .step {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 0.95rem; color: var(--gray-500); }
+
+    /* Banks */
+    .banks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .bank-chip {
+      background: var(--gray-100);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      color: var(--gray-700);
+    }
+
+    .bank-chip.supported { background: #ecfdf5; color: #065f46; }
+    .bank-chip.coming { background: var(--gray-100); color: var(--gray-500); font-weight: 400; }
+
+    .banks-note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--gray-500);
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .feature {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .feature p { font-size: 0.9rem; color: var(--gray-500); }
+
+    /* Use cases */
+    .use-cases { background: var(--navy); color: var(--white); }
+    .use-cases .section-subtitle { color: rgba(255,255,255,0.5); }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .case-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .case-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .case-card p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* Pricing */
+    .pricing { text-align: center; }
+
+    .price-card {
+      max-width: 480px;
+      margin: 48px auto 0;
+      background: var(--white);
+      border: 2px solid var(--blue);
+      border-radius: 20px;
+      padding: 48px 40px;
+      position: relative;
+    }
+
+    .price-card .badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 20px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .price-amount {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .price-amount span { font-size: 1.2rem; color: var(--gray-500); font-weight: 400; }
+
+    .price-desc {
+      font-size: 1rem;
+      color: var(--gray-500);
+      margin: 8px 0 32px;
+    }
+
+    .price-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .price-features li {
+      padding: 8px 0;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price-features li::before {
+      content: "âœ“";
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .price-cta {
+      display: block;
+      width: 100%;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+      text-align: center;
+    }
+
+    .price-cta:hover { background: var(--blue-hover); }
+
+    .price-guarantee {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--gray-500);
+    }
+
+    /* FAQ */
+    .faq { background: var(--gray-100); }
+
+    .faq-list {
+      max-width: 700px;
+      margin: 40px auto 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px 0;
+    }
+
+    .faq-q {
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-a {
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.4);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px 80px; }
+      section { padding: 60px 20px; }
+      .trust-bar { gap: 24px; }
+      .price-card { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">100% Local Processing â€” Your Data Never Leaves Your Device</div>
+      <h1>Extract Bank Statements <span>Securely</span></h1>
+      <p>Drop a PDF, get a reconciled Excel workbook. No cloud uploads, no AI reading your financial data, no subscriptions. Your data never leaves your device.</p>
+      <a href="#pricing" class="hero-cta">
+        Download for Windows â†’
+      </a>
+      <span class="hero-price"><strong>$99</strong> one-time purchase Â· No subscription</span>
+
+      <div class="trust-bar">
+        <div class="trust-item"><span class="icon">ðŸ”’</span> Zero cloud dependency</div>
+        <div class="trust-item"><span class="icon">âš¡</span> Under 3 seconds per statement</div>
+        <div class="trust-item"><span class="icon">âœ…</span> Auto-reconciled to the penny</div>
+        <div class="trust-item"><span class="icon">ðŸ“¦</span> 3 MB download</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three steps. No configuration.</h2>
+      <p class="section-subtitle">No accounts, no API keys, no cloud setup. Just drag and drop.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Drop Your PDF</h3>
+          <p>Drag a bank statement PDF into the app. Digital or OCR'd â€” both work.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Auto-Detect & Parse</h3>
+          <p>The app identifies the bank format and extracts every transaction using bank-specific parsers. No AI, no guessing.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Download Excel</h3>
+          <p>Get a clean workbook with all transactions and a reconciliation sheet that ties to the penny.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supported Banks -->
+  <section class="banks">
+    <div class="container">
+      <div class="section-label">Supported Banks</div>
+      <h2 class="section-title">8 banks and counting</h2>
+      <p class="section-subtitle">Built from real statement formats. Each parser is validated against actual bank statements with zero-variance reconciliation.</p>
+
+      <div class="banks-grid">
+        <div class="bank-chip supported">Chase âœ“</div>
+        <div class="bank-chip supported">Bank of America âœ“</div>
+        <div class="bank-chip supported">Wells Fargo âœ“</div>
+        <div class="bank-chip supported">Citi âœ“</div>
+        <div class="bank-chip supported">PNC âœ“</div>
+        <div class="bank-chip supported">Capital One âœ“</div>
+        <div class="bank-chip supported">TD Bank âœ“</div>
+        <div class="bank-chip supported">Chase CC âœ“</div>
+        <div class="bank-chip coming">Truist â€” soon</div>
+        <div class="bank-chip coming">Navy Federal â€” soon</div>
+        <div class="bank-chip coming">US Bank â€” soon</div>
+        <div class="bank-chip coming">More coming â†’</div>
+      </div>
+      <p class="banks-note">Don't see your bank? The app includes a generic parser that works with most standard formats, plus a diagnostic tool to help us add support fast.</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <div class="section-label">Why Professionals Choose This</div>
+      <h2 class="section-title">Built for people who need to be right</h2>
+      <p class="section-subtitle">Designed for forensic accountants, legal analysts, and anyone who can't afford errors in financial data.</p>
+
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">ðŸ”’</div>
+          <h3>100% Local Processing</h3>
+          <p>Your PDFs are parsed entirely on your machine. Nothing is uploaded, transmitted, or stored anywhere. Attorney-client privilege stays intact.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">ðŸŽ¯</div>
+          <h3>Forensic-Grade Reconciliation</h3>
+          <p>Every extraction is verified: beginning balance + transactions = ending balance. You'll know immediately if something doesn't tie.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">âš¡</div>
+          <h3>No AI, No Cloud, No Surprises</h3>
+          <p>Purpose-built parsers for each bank format â€” not a generic AI trying to guess your columns. Deterministic output every time.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">ðŸ“Š</div>
+          <h3>Clean Excel Output</h3>
+          <p>Transactions sheet with date, description, type, debit/credit, and running balance. Reconciliation sheet with variance analysis.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">ðŸ¦</div>
+          <h3>Multi-Format Support</h3>
+          <p>Checking, savings, credit cards, business accounts. Handles combined statements, multi-period PDFs, and OCR'd scans.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">ðŸ”„</div>
+          <h3>Free Parser Updates</h3>
+          <p>New bank formats added regularly. The app checks for parser updates on launch â€” no reinstall needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI vs Local â€” SEO section targeting "extract bank statements with AI" -->
+  <section class="ai-compare" style="background: #f9fafb; border-top: 1px solid #e5e7eb;">
+    <div class="container">
+      <div class="section-label">Why Not AI?</div>
+      <h2 class="section-title">Most tools upload your bank data to the cloud. We don't.</h2>
+      <p class="section-subtitle">AI-powered extraction tools send your financial data to third-party servers for processing. That's a problem if you handle privileged, confidential, or regulated information.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px;">
+        <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 16px; padding: 28px;">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 12px; color: #991b1b;">âŒ AI Cloud Extraction</h3>
+          <ul style="list-style: none; font-size: 0.9rem; color: #6b7280; line-height: 2;">
+            <li>Your PDF uploaded to third-party servers</li>
+            <li>Financial data processed by AI models you don't control</li>
+            <li>Results vary â€” AI can hallucinate amounts</li>
+            <li>Per-page or per-document fees add up fast</li>
+            <li>Attorney-client privilege concerns</li>
+            <li>Requires internet connection</li>
+          </ul>
+        </div>
+        <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 16px; padding: 28px;">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 12px; color: #065f46;">âœ… Extract Statements</h3>
+          <ul style="list-style: none; font-size: 0.9rem; color: #6b7280; line-height: 2;">
+            <li>100% local â€” nothing leaves your machine</li>
+            <li>Deterministic parsers â€” same input, same output, every time</li>
+            <li>Reconciles to the penny, catches its own errors</li>
+            <li>$99 one-time â€” unlimited documents forever</li>
+            <li>Safe for privileged and regulated data</li>
+            <li>Works offline, no internet required</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top: 24px; font-size: 0.9rem; color: #6b7280; max-width: 700px;">
+        <strong>Looking to extract bank statements with AI?</strong> You don't need it. Purpose-built parsers are faster, cheaper, and more accurate than general-purpose AI for structured documents like bank statements. And your data stays on your device â€” not on someone else's GPU.
+      </p>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="use-cases">
+    <div class="container">
+      <div class="section-label" style="color: rgba(255,255,255,0.3);">Built For</div>
+      <h2 class="section-title">Who uses this</h2>
+      <p class="section-subtitle">If you've ever manually typed bank statement data into a spreadsheet, this is for you.</p>
+
+      <div class="cases-grid">
+        <div class="case-card">
+          <h3>ðŸ” Forensic Accountants</h3>
+          <p>Trace funds across accounts without spending hours on data entry. Reconciliation is automatic â€” you focus on the analysis.</p>
+        </div>
+        <div class="case-card">
+          <h3>âš–ï¸ Litigation Support</h3>
+          <p>Extract transaction data from bank statement exhibits for case analysis. Local processing means no data handling concerns.</p>
+        </div>
+        <div class="case-card">
+          <h3>ðŸ“‹ Auditors & CPAs</h3>
+          <p>Convert client bank statements to workable data in seconds. Built-in reconciliation catches discrepancies immediately.</p>
+        </div>
+        <div class="case-card">
+          <h3>ðŸ¢ Bookkeepers</h3>
+          <p>Import bank data into your accounting workflow without waiting for bank feeds. Works with any statement you have on hand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">One price. No gotchas.</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">No per-document fees, no monthly subscriptions, no usage limits. Pay once, use forever.</p>
+
+      <div class="price-card">
+        <div class="badge">Most Popular</div>
+        <div class="price-amount">$99 <span>one-time</span></div>
+        <p class="price-desc">Unlimited statements, unlimited banks, free parser updates</p>
+        <ul class="price-features">
+          <li>All 8+ supported bank parsers</li>
+          <li>Auto-reconciliation on every extraction</li>
+          <li>100% local â€” zero data transmitted</li>
+          <li>Free parser updates as new banks are added</li>
+          <li>Windows (macOS coming soon)</li>
+          <li>Priority format requests via diagnostic tool</li>
+        </ul>
+        <!-- Replace href with LemonSqueezy checkout link -->
+        <a href="#" class="price-cta" id="buy-btn">Buy Now â€” $99</a>
+        <p class="price-guarantee">30-day money-back guarantee. No questions asked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Does my data get uploaded anywhere?</div>
+          <div class="faq-a">No. Everything runs locally on your computer. The app doesn't even have network code for uploading files â€” it's architecturally impossible for your data to leave your device.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What formats are supported?</div>
+          <div class="faq-a">PDF bank statements â€” both digital (text-based) and OCR'd scans. The app detects the bank automatically and uses a dedicated parser for each format. If your bank isn't specifically supported yet, a generic parser attempts extraction.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What if my bank isn't supported?</div>
+          <div class="faq-a">The app includes a generic parser that works with most standard statement formats. If it can't parse your statement, a built-in diagnostic tool generates a privacy-safe format fingerprint (no personal data) that you can send us to fast-track support for your bank.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is there a subscription or per-document fee?</div>
+          <div class="faq-a">No. $99 one-time purchase. Process as many statements as you want, forever. Parser updates (new bank support) are included free.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What does the Excel output look like?</div>
+          <div class="faq-a">Two sheets: (1) Transactions â€” date, description, transaction type, debit/credit, running balance for every transaction. (2) Reconciliation â€” beginning balance, total credits, total debits, ending balance, computed vs. stated variance.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I use this for legal/forensic work?</div>
+          <div class="faq-a">That's exactly what it's built for. 100% local processing means no data handling concerns for attorney-client privileged material. The reconciliation sheet provides an auditable proof that the extraction ties to the source document.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Mac support?</div>
+          <div class="faq-a">Windows only right now. macOS is coming soon â€” the app is built on cross-platform technology (Tauri), so it's a matter of building and testing, not rewriting.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Need something custom?</div>
+          <div class="faq-a">We offer bespoke extraction services for firms with unusual formats, high volume needs, or specific output requirements. <a href="mailto:support@extractstatements.com">Get in touch</a>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 12px;">
+        <a href="mailto:support@extractstatements.com">support@extractstatements.com</a>
+      </p>
+      <p>Â© 2026 Extract Statements. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Smooth scroll -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
